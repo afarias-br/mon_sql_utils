@@ -10,3 +10,11 @@ FROM RDB$INDICES i
 WHERE i.RDB$SYSTEM_FLAG = 0  -- Filter out system indexes
   AND (i.RDB$STATISTICS = 0 OR i.RDB$INDEX_INACTIVE = 1)
 ORDER BY table_name, index_name;
+
+SELECT 
+    rdb$index_name AS index_name,
+    rdb$relation_name AS table_name,
+    rdb$statistics AS selectivity
+FROM rdb$indices
+WHERE rdb$statistics > 0 
+ORDER BY rdb$statistics DESC;
