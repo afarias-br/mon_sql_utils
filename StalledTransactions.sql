@@ -1,0 +1,6 @@
+SELECT 
+    MON$OLDEST_TRANSACTION AS oldest_interesting_tx,
+    MON$OLDEST_ACTIVE AS oldest_active_tx,
+    MON$NEXT_TRANSACTION AS next_tx,
+    (MON$NEXT_TRANSACTION - MON$OLDEST_TRANSACTION) AS tx_gap_size
+FROM MON$DATABASE;
